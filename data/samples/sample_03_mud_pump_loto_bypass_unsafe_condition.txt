@@ -1,0 +1,13 @@
+OIL FIELD SAFETY REPORT
+Report ID: OIL-HSE-2026-0349
+Date: 2026-04-15
+Location: Mud Pump House #02, Shalmari Oil Field
+Report Type: Unsafe Condition
+Reported By: Mechanical Maintenance Supervisor
+
+NARRATIVE / DESCRIPTION:
+While conducting scheduled routine maintenance on Triplex Mud Pump MP-01, an operator attempted to remove the discharge valve cover cap on module #2. 
+
+A high-velocity hiss of compressed drilling fluid and air sprayed from the seal threads as the bonnet bolts were loosened. The technician quickly retightened the clamp. 
+
+Subsequent investigation revealed that while the electrical supply breaker had been tagged at the MCC room, the hydraulic pressure bleed-off valve on the pulsation dampener line had not been opened, leaving residual stored fluid pressure of approximately 1,200 PSI trapped inside the manifold. The pressure gauge read zero due to a clogged bourdon tube, leading workers to falsely believe the system was completely depressurized. Trapped high-pressure release poses acute projectile and injection hazards to personnel.

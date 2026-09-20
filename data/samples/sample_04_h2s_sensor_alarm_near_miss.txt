@@ -1,0 +1,15 @@
+OIL FIELD SAFETY REPORT
+Report ID: OIL-HSE-2026-0350
+Date: 2026-04-16
+Location: Crude Oil Collecting Station (OCS) #04 - Manifold Header, Digboi
+Report Type: Near Miss
+Reported By: Shift Production Engineer
+
+NARRATIVE / DESCRIPTION:
+At 14:15 hours, the stationary multi-point toxic gas monitoring alarm panel sounded a high-level warning at Zone 3 (Well Fluid Gathering Manifold). 
+
+Fixed sensor H2S-03 registered 24 PPM hydrogen sulfide gas concentration. Two operations technicians were en route to perform a manual valve lineup switchover without personal H2S clip-on monitors and without emergency escape breathing apparatus (EEBA) packs. 
+
+The control room console operator triggered the field sirens and activated the automated safety shut-down valve (SDV-101), directing the inlet flow to the emergency flare stack. The field workers immediately turned upwind and reached the designated muster area safely. 
+
+Upon investigation, packing seal degradation on a 4-inch sour crude valve stem was discovered to have allowed toxic gas release. Lack of personal gas monitors during entry into known sour gas zones represents a critical life-safety barrier deficiency.

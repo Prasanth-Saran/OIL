@@ -1,0 +1,17 @@
+OIL FIELD SAFETY REPORT
+Report ID: OIL-HSE-2026-0352
+Date: 2026-04-19
+Location: Crude Storage Terminal - Tank TK-104, Duliajan
+Report Type: Near Miss
+Reported By: Terminal Safety Auditor
+
+NARRATIVE / DESCRIPTION:
+During pre-cleaning inspection of crude oil storage tank TK-104 (diameter 32m, height 14m), a contract cleaning foreman and two laborers were found inside the tank manway opening preparing sludge removal shovels. 
+
+The safety audit team reviewed the Permit to Work (PTW) documentation on-site and verified that:
+1) The Confined Space Entry permit had not been signed off by the Authorized Gas Tester (AGT).
+2) Forced draft ventilation blowers had not been powered on.
+3) Oxygen level check was not recorded (last reading was 18.2% two days prior).
+4) No dedicated standby attendant was stationed at the manway with a retrieval winch.
+
+The workers were immediately ordered out of the vessel. Entry into an uncertified confined space with potential hydrocarbon residue and oxygen deficiency represents a severe potential SIF precursor event.

@@ -1,0 +1,6 @@
+{
+  "name": "SIF Safety Intelligence Platform",
+  "description": "Enterprise safety report analysis and prioritization platform for Oil India Limited (OIL) unsafe acts, unsafe conditions, and near-miss reports with SIF precursor detection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

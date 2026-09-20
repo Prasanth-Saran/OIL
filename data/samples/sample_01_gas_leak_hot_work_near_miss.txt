@@ -1,0 +1,15 @@
+OIL FIELD SAFETY REPORT
+Report ID: OIL-HSE-2026-0347
+Date: 2026-04-12
+Location: Wellsite Rig #14 - Separation Area, Duliajan Field
+Report Type: Near Miss
+Reported By: Field Safety Steward
+
+NARRATIVE / DESCRIPTION:
+During morning shift maintenance operations, contract mechanical technicians commenced hot work oxy-acetylene welding on a structural pipe support bracket adjacent to the high-pressure 3-phase test separator (HP-SEP-02). 
+
+Approximately 8 minutes into the operation, hot sparks and slag dropped across a 2-inch condensate drain manifold. The crew detected a strong gas odor and the portable combustible hydrocarbon gas detector alarmed, registering 38% LEL. 
+
+Upon emergency stop and inspection, the safety officer discovered that the isolation valve on the drain header had not been blanked or positively isolated under LOTO procedures, allowing methane and light condensate vapor to weep into the hot work zone. Two contract welders were positioned inside the vapor envelope without air-supplied breathing equipment or a continuous gas monitoring watch. The welding torch was immediately extinguished and the area evacuated. 
+
+No ignition or explosion occurred due to prompt manual shutdown, but this incident represents a severe potential SIF precursor involving flammable hydrocarbon release and direct ignition sources.

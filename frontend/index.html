@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIF Safety Intelligence Platform - Oil India Limited</title>
+  <meta name="description" content="Enterprise safety report analysis and SIF precursor prioritization platform for Oil India Limited." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="top-nav" id="top-nav">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-badge">OIL HSE</div>
+        <div class="brand-titles">
+          <h1 class="brand-name">SIF Safety Intelligence</h1>
+          <p class="brand-subtitle">Safety Report Analysis & Prioritization Platform</p>
+        </div>
+      </div>
+      <div class="nav-meta">
+        <div class="meta-item">
+          <span class="meta-dot status-online" id="system-status-dot"></span>
+          <span class="meta-label" id="system-status-text">System Ready</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <span class="meta-caption">Last Analysis:</span>
+          <span class="meta-value" id="last-analysis-time">No active run</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="user-profile">
+          <div class="user-avatar">SO</div>
+          <div class="user-details">
+            <span class="user-name">HSE Safety Officer</span>
+            <span class="user-org">Oil India Limited</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Safety Principle Banner -->
+  <div class="safety-banner" id="safety-banner">
+    <div class="banner-content">
+      <span class="banner-badge">DECISION-SUPPORT SYSTEM</span>
+      <p class="banner-text">
+        This platform assists safety personnel by identifying potential Serious Injury and Fatality (SIF) precursor indicators and prioritizing reports. 
+        <strong>Final safety determinations, risk controls, and operational permits remain the exclusive responsibility of qualified human safety professionals.</strong>
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="main-content" id="main-content">
+    
+    <!-- Hero / Upload Section -->
+    <section class="card upload-card" id="upload-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Analyze Safety Reports</h2>
+          <p class="section-desc">
+            Upload a batch of safety reports (Unsafe Acts, Unsafe Conditions, Near Misses) to identify potential SIF precursor indicators and prioritize reports requiring immediate human review.
+          </p>
+        </div>
+        <div class="header-actions">
+          <button type="button" class="btn btn-secondary" id="btn-load-sample" title="Load fictional Oil India Limited test reports">
+            Load OIL Sample Batch (8 Reports)
+          </button>
+          <button type="button" class="btn btn-outline" id="btn-clear-all" title="Clear all loaded reports from database">
+            Reset Database
+          </button>
+        </div>
+      </div>
+
+      <!-- Drag & Drop Zone -->
+      <div class="drop-zone" id="drop-zone">
+        <input type="file" id="file-input" multiple accept=".pdf,.docx,.txt,.zip" class="file-input-hidden" />
+        <div class="drop-zone-content">
+          <div class="drop-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+          </div>
+          <p class="drop-title">Drag & drop report files here, or <button type="button" class="link-button" id="btn-browse">browse files</button></p>
+          <p class="drop-hint">Supported formats: PDF, DOCX, TXT, or ZIP archives containing bulk reports. Up to hundreds of reports can be analyzed in a single batch.</p>
+        </div>
+      </div>
+
+      <!-- Selected Files Bar (when files staged) -->
+      <div class="staged-files-bar" id="staged-files-bar" style="display: none;">
+        <div class="staged-info">
+          <span class="staged-count" id="staged-count">0 files selected</span>
+          <span class="staged-size" id="staged-size">(0 KB)</span>
+        </div>
+        <div class="staged-actions">
+          <button type="button" class="btn btn-text" id="btn-remove-selected">Remove Selected</button>
+          <button type="button" class="btn btn-primary" id="btn-start-analyze">
+            <span>Analyze Reports</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analysis Progress Section -->
+    <section class="card progress-card" id="progress-section" style="display: none;">
+      <div class="progress-header">
+        <div>
+          <h3 class="progress-title">Analyzing Safety Reports</h3>
+          <p class="progress-counter" id="progress-counter">0 of 0 reports analyzed</p>
+        </div>
+        <span class="badge badge-processing" id="progress-badge">Processing Batch</span>
+      </div>
+
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progress-bar-fill" style="width: 0%;"></div>
+      </div>
+
+      <div class="progress-meta">
+        <div class="progress-file">
+          <span class="meta-caption">Current File:</span>
+          <span class="meta-value font-mono" id="progress-current-file">Initializing...</span>
+        </div>
+        <div class="progress-step">
+          <span class="meta-caption">Active Step:</span>
+          <span class="meta-value" id="progress-current-step">Extracting report text & safety factors</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Summary Metrics Cards -->
+    <section class="metrics-grid" id="metrics-section">
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-label">Total Reports</span>
+          <span class="metric-icon total">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </span>
+        </div>
+        <div class="metric-value" id="metric-total">0</div>
+        <div class="metric-subtext">Analyzed in database</div>
+      </div>
+
+      <div class="metric-card metric-card-sif">
+        <div class="metric-header">
+          <span class="metric-label">Potential SIF Precursors</span>
+          <span class="metric-icon sif">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </span>
+        </div>
+        <div class="metric-value text-critical" id="metric-sif">0</div>
+        <div class="metric-subtext">Precursor indicators flagged</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-label">Critical Risk</span>
+          <span class="status-indicator-dot dot-critical"></span>
+        </div>
+        <div class="metric-value text-critical" id="metric-critical">0</div>
+        <div class="metric-subtext">Priority 1 Attention</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-label">High Risk</span>
+          <span class="status-indicator-dot dot-high"></span>
+        </div>
+        <div class="metric-value text-high" id="metric-high">0</div>
+        <div class="metric-subtext">Priority 2 Attention</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-label">Medium Risk</span>
+          <span class="status-indicator-dot dot-medium"></span>
+        </div>
+        <div class="metric-value text-medium" id="metric-medium">0</div>
+        <div class="metric-subtext">Priority 3 Attention</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-label">Low Risk</span>
+          <span class="status-indicator-dot dot-low"></span>
+        </div>
+        <div class="metric-value text-low" id="metric-low">0</div>
+        <div class="metric-subtext">Routine Observations</div>
+      </div>
+    </section>
+
+    <!-- Prioritization Table Section (CORE FEATURE) -->
+    <section class="card table-card" id="reports-section">
+      <div class="table-section-header">
+        <div>
+          <h2 class="section-title">Reports Requiring Attention</h2>
+          <p class="section-desc">Prioritized order based on SIF precursor indicators, hazard severity, and barrier failure.</p>
+        </div>
+        <div class="table-controls">
+          <div class="search-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="table-search" placeholder="Search filename, hazard, factor..." class="search-input" />
+          </div>
+          <div class="sort-select-wrapper">
+            <label for="table-sort" class="sort-label">Sort:</label>
+            <select id="table-sort" class="select-input">
+              <option value="priority_rank">Priority (Critical First)</option>
+              <option value="risk_score">Risk Score (High to Low)</option>
+              <option value="date">Date Uploaded (Newest)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-bar" id="filter-bar">
+        <button type="button" class="filter-tab active" data-filter="all">All (<span id="tab-count-all">0</span>)</button>
+        <button type="button" class="filter-tab" data-filter="critical">Critical (<span id="tab-count-critical">0</span>)</button>
+        <button type="button" class="filter-tab" data-filter="high">High (<span id="tab-count-high">0</span>)</button>
+        <button type="button" class="filter-tab" data-filter="medium">Medium (<span id="tab-count-medium">0</span>)</button>
+        <button type="button" class="filter-tab" data-filter="low">Low (<span id="tab-count-low">0</span>)</button>
+        <div class="filter-divider"></div>
+        <button type="button" class="filter-tab" data-filter="sif">Potential SIF Precursor</button>
+        <button type="button" class="filter-tab" data-filter="near_miss">Near Miss</button>
+        <button type="button" class="filter-tab" data-filter="unsafe_act">Unsafe Act</button>
+        <button type="button" class="filter-tab" data-filter="unsafe_condition">Unsafe Condition</button>
+        <div class="filter-divider"></div>
+        <button type="button" class="filter-tab" data-filter="pending">Pending Review</button>
+        <button type="button" class="filter-tab" data-filter="reviewed">Reviewed</button>
+      </div>
+
+      <!-- Table -->
+      <div class="table-responsive">
+        <table class="data-table" id="reports-table">
+          <thead>
+            <tr>
+              <th style="width: 60px;">Rank</th>
+              <th>Report File</th>
+              <th style="width: 140px;">Type</th>
+              <th style="width: 120px;">Risk Level</th>
+              <th style="width: 140px;">Potential SIF Precursor</th>
+              <th>Key Detected Factors</th>
+              <th style="width: 150px;">Review Status</th>
+              <th style="width: 100px; text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="reports-table-body">
+            <!-- Populated via script.js -->
+            <tr>
+              <td colspan="8" class="empty-state">
+                <div class="empty-state-inner">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                  <p class="empty-title">No reports to display</p>
+                  <p class="empty-desc">Upload and analyze safety reports to see results here.</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Analytics / Safety Trends Section -->
+    <section class="analytics-grid" id="analytics-section">
+      <div class="card analytics-card">
+        <h3 class="card-subtitle">Reports by Safety Classification</h3>
+        <p class="card-caption">Distribution across Unsafe Acts, Unsafe Conditions, and Near Misses</p>
+        <div class="chart-container" id="type-chart-container">
+          <div class="type-bars" id="type-bars">
+            <!-- Generated via JS -->
+            <p class="text-secondary text-sm">No classification data yet.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card analytics-card">
+        <h3 class="card-subtitle">Top Detected Operational Hazards</h3>
+        <p class="card-caption">Prevalent hazard factors identified across uploaded reports</p>
+        <div class="chart-container" id="hazard-chart-container">
+          <div class="hazard-list" id="hazard-list">
+            <!-- Generated via JS -->
+            <p class="text-secondary text-sm">No hazard data yet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Report Detail Modal / Slide Panel -->
+  <div class="modal-backdrop" id="modal-backdrop" style="display: none;">
+    <div class="modal-container" id="modal-container">
+      <div class="modal-header">
+        <div>
+          <div class="modal-pretitle">Safety Intelligence Review</div>
+          <h2 class="modal-title" id="modal-report-title">Report Detail</h2>
+        </div>
+        <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body" id="modal-body">
+        
+        <!-- Top Status Strip -->
+        <div class="detail-status-strip">
+          <div class="status-block">
+            <span class="status-block-label">Risk Level</span>
+            <div id="modal-risk-badge" class="badge badge-lg badge-low">-</div>
+          </div>
+          <div class="status-block">
+            <span class="status-block-label">Risk Score</span>
+            <div class="score-display">
+              <span id="modal-risk-score" class="score-number">0</span>
+              <span class="score-max">pts</span>
+            </div>
+          </div>
+          <div class="status-block">
+            <span class="status-block-label">Potential SIF Precursor</span>
+            <div id="modal-sif-badge" class="badge badge-lg badge-sif-no">-</div>
+          </div>
+          <div class="status-block">
+            <span class="status-block-label">Priority Ranking</span>
+            <div id="modal-priority-rank" class="rank-number">-</div>
+          </div>
+        </div>
+
+        <!-- Section: Report Information & Original Text -->
+        <div class="detail-section">
+          <h3 class="detail-section-title">Report Information</h3>
+          <div class="meta-grid">
+            <div class="meta-field">
+              <span class="field-label">Report Type:</span>
+              <span class="field-val" id="modal-meta-type">-</span>
+            </div>
+            <div class="meta-field">
+              <span class="field-label">Operational Location:</span>
+              <span class="field-val" id="modal-meta-location">-</span>
+            </div>
+            <div class="meta-field">
+              <span class="field-label">Date Reported:</span>
+              <span class="field-val" id="modal-meta-date">-</span>
+            </div>
+            <div class="meta-field">
+              <span class="field-label">File Name:</span>
+              <span class="field-val font-mono" id="modal-meta-filename">-</span>
+            </div>
+          </div>
+
+          <div class="text-block-wrapper">
+            <div class="text-block-header">Original Report Narrative</div>
+            <div class="text-block" id="modal-report-text">Loading report text...</div>
+          </div>
+        </div>
+
+        <!-- Section: Why Was It Flagged (Explainability) -->
+        <div class="detail-section highlight-section">
+          <h3 class="detail-section-title">Why Was It Flagged?</h3>
+          <p class="explanation-text" id="modal-explanation">
+            Explanation will be displayed here.
+          </p>
+        </div>
+
+        <!-- Section: Detected Safety Factors -->
+        <div class="detail-section">
+          <h3 class="detail-section-title">Detected Structured Safety Factors</h3>
+          <div class="factors-grid" id="modal-factors-grid">
+            <!-- Populated via script.js -->
+          </div>
+        </div>
+
+        <!-- Section: Safety Support Suggestions -->
+        <div class="detail-section suggestions-section">
+          <div class="suggestions-header">
+            <h3 class="detail-section-title">Suggested Safety Actions</h3>
+            <span class="badge badge-neutral">Decision Support Suggestions</span>
+          </div>
+          <p class="suggestions-disclaimer">Supporting considerations for safety personnel. Do not present as mandatory instructions; final decision rests with qualified safety officers.</p>
+          <ul class="suggestions-list" id="modal-suggestions-list">
+            <!-- Populated via script.js -->
+          </ul>
+        </div>
+
+        <!-- Section: Human Safety Officer Review -->
+        <div class="detail-section review-section">
+          <h3 class="detail-section-title">Human Safety Review & Oversight</h3>
+          <p class="section-caption">Official safety decision recorded by Oil India Limited authorized personnel.</p>
+          
+          <form id="review-form" class="review-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="review-status" class="form-label">Review Determination:</label>
+                <select id="review-status" class="select-input">
+                  <option value="Pending Review">Pending Review</option>
+                  <option value="Confirmed">Confirmed as Potential SIF Precursor</option>
+                  <option value="Not a SIF Precursor">Not a SIF Precursor</option>
+                  <option value="Requires Further Review">Requires Further On-Site Investigation</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="reviewer-name" class="form-label">Reviewer Name / Employee ID:</label>
+                <input type="text" id="reviewer-name" class="text-input" value="HSE Officer - Rig Safety" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="review-comment" class="form-label">Safety Officer Review Comments / Corrective Action Plan:</label>
+              <textarea id="review-comment" class="textarea-input" rows="3" placeholder="Enter findings, permit verification, or specific corrective actions taken..."></textarea>
+            </div>
+
+            <div class="review-footer">
+              <span class="last-reviewed-stamp" id="modal-reviewed-stamp">Status: Pending Review</span>
+              <button type="submit" class="btn btn-primary" id="btn-save-review">
+                Save Review Determination
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Pure Vanilla JavaScript Script -->
+  <script src="script.js"></script>
+</body>
+</html>

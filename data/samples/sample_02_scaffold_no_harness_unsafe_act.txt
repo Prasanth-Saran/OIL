@@ -1,0 +1,13 @@
+OIL FIELD SAFETY REPORT
+Report ID: OIL-HSE-2026-0348
+Date: 2026-04-14
+Location: Drilling Rig #09 - Mast & Derrick, Moran Field
+Report Type: Unsafe Act
+Reported By: Toolpusher / Assistant Drilling Superintendent
+
+NARRATIVE / DESCRIPTION:
+During tripping-in operations of 5-inch drill pipe, the derrickman was observed working on the monkey board platform at an elevation of approximately 24 meters above the drill floor. 
+
+The safety inspection revealed that although the worker was wearing a full-body safety harness, the inertia reel fall-arrest lanyard was unhooked and draped over the handrail rather than anchored to the certified overhead lifeline cable. Furthermore, the worker was leaning out over the racking fingers to catch a swaying drill pipe stand without any secondary tie-off.
+
+Work was immediately suspended via Stop Work Authority (SWA). The derrickman stated that he had detached the lanyard temporarily to reach a stuck pipe latch. The potential consequence of a fall from this elevation without positive arrest is a fatal fall event (SIF precursor).

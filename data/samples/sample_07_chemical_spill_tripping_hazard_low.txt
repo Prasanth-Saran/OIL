@@ -1,0 +1,13 @@
+OIL FIELD SAFETY REPORT
+Report ID: OIL-HSE-2026-0353
+Date: 2026-04-20
+Location: Central Workshop - Bay 3, Duliajan Mechanical Yard
+Report Type: Unsafe Condition
+Reported By: Workshop Safety Steward
+
+NARRATIVE / DESCRIPTION:
+During daily housekeeping walkthrough, an oily patch of lubricating oil (approx. 1 meter in diameter) was observed on the concrete walkway between lathe machine #4 and the tool storage rack. 
+
+Additionally, a 220V power extension lead feeding a portable battery charger was routed across the walkway without rubber cable crossover protection, creating a minor tripping hazard. 
+
+Drip tray was placed under the gearbox seep, oil absorbent granules applied to clean the floor, and the extension cable was rerouted along the wall conduit. No personnel slipped or sustained injuries.

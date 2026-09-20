@@ -1,0 +1,11 @@
+OIL FIELD SAFETY REPORT
+Report ID: OIL-HSE-2026-0354
+Date: 2026-04-21
+Location: Field Engineering Administrative Complex, Naharkatiya
+Report Type: Unsafe Condition
+Reported By: HSE Compliance Inspector
+
+NARRATIVE / DESCRIPTION:
+During monthly fire prevention routine inspection, a 5kg carbon dioxide (CO2) portable fire extinguisher located in the ground floor corridor outside the conference room was noted to have an expired inspection maintenance tag (last tested 14 months prior). 
+
+The pressure gauge needle was in the green operational zone and the safety pin and tamper seal were intact. The extinguisher was tagged out of service and replaced with a newly inspected unit from stores. Observation logged in routine maintenance tracker.
